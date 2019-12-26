@@ -27,7 +27,9 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first (name, par1) {
+ return par1(name[0]);
+}
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -47,7 +49,9 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+function last (array, cool){
+  return cool(array[1]);
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -65,7 +69,11 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+function multiply (num1, num2, answer){ 
+  var sum = num1 * num2;
+  return answer(sum)
+
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -84,7 +92,13 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+function contains (array, name, callback){
+  return (array.includes(name)) ? callback(true) : callback(false);
+}
+
+function fun1(callback){
+  return callback;
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -105,7 +119,16 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+function uniq (arr, cb){
+  for (let i = 0; i < arr.length; i ++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j] && i !== j) {
+        arr.splice(j, 1)
+      }
+    }
+  }
+  return cb(arr)
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -123,7 +146,11 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-
+function each (array, cb){
+  for(let i = 0; i < array.length; i++){
+     cb (array[i], i)
+  }
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,7 +167,19 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById (array, id, callb){
+  for(let i = 0; i < array.length; i++){
+    if(id === array[i].id){
+      return callb(array[i])
+    }
 
+      }
+    }
+  
+    function callb(data){
+    return data
+    }
+  
 // Do not edit the code below.
 var users = [
   {
